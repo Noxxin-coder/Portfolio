@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-03T00:00:00.000Z",
+  "title": "Design System: Kinshuk Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "filament-violet": {
+        "role": "primary",
+        "displayName": "Filament Violet",
+        "canonical": "#8b6cff",
+        "tonalRamp": ["#150e2e", "#231648", "#33206b", "#452c94", "#5b3ee8", "#7455f4", "#8b6cff", "#c4b4ff"]
+      },
+      "cold-cathode": {
+        "role": "secondary",
+        "displayName": "Cold Cathode",
+        "canonical": "#7cd4ff",
+        "tonalRamp": ["#06222e", "#0a3446", "#0d7ea6", "#1a9ac6", "#3fb4de", "#5fc6ef", "#7cd4ff", "#c2e9ff"]
+      },
+      "base": {
+        "role": "neutral",
+        "displayName": "Desk Black",
+        "canonical": "#08080a",
+        "tonalRamp": ["#08080a", "#0c0d10", "#121319", "#1c1e26", "#2a2d38", "#5f6470", "#9195a1", "#e9e9ee"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface Slate",
+        "canonical": "#0c0d10",
+        "tonalRamp": ["#08080a", "#0c0d10", "#121319", "#1c1e26", "#2a2d38", "#5f6470", "#9195a1", "#e9e9ee"]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised Graphite",
+        "canonical": "#121319",
+        "tonalRamp": ["#08080a", "#0c0d10", "#121319", "#1c1e26", "#2a2d38", "#5f6470", "#9195a1", "#e9e9ee"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#e9e9ee",
+        "tonalRamp": ["#08080a", "#0c0d10", "#121319", "#2a2d38", "#5f6470", "#9195a1", "#c9cbd3", "#e9e9ee"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Steel",
+        "canonical": "#9195a1",
+        "tonalRamp": ["#101218", "#1c1e26", "#2a2d38", "#414552", "#5f6470", "#7a7e8b", "#9195a1", "#d4d6dd"]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Faint Slate",
+        "canonical": "#5f6470",
+        "tonalRamp": ["#0c0d10", "#161820", "#22252e", "#33363f", "#4a4e58", "#5f6470", "#868a95", "#c3c6cd"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(255, 255, 255, 0.08)",
+        "tonalRamp": ["rgba(255,255,255,0.02)", "rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.24)", "rgba(255,255,255,0.4)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The wordmark and the 404 headline. Once per page at most; tracking is tight enough that letters nearly touch." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, always paired with a mono index label above." },
+      "title": { "displayName": "Title", "purpose": "Card, project and journey-stage titles. Regular weight — size carries hierarchy." },
+      "lede": { "displayName": "Lede", "purpose": "The single oversized paragraph opening About and anchoring Contact. Set in Paper White, not Muted Steel." },
+      "body": { "displayName": "Body", "purpose": "All reading text, in Muted Steel, capped near 65ch." },
+      "label": { "displayName": "Label", "purpose": "Mono, uppercase, wide-tracked. Section indices, metadata keys, status values, captions." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-signature", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The system's only easing curve. Fast out, long settle — used for every reveal, tab change and card entrance." },
+      { "name": "duration-state", "value": "300ms", "purpose": "Card and control state changes: border, background, lift." },
+      { "name": "duration-art", "value": "700ms", "purpose": "Artwork scale inside a hovered card. Deliberately slower than its frame so the lift reads as depth." },
+      { "name": "duration-reveal", "value": "550ms", "purpose": "Scroll-triggered section reveals, 18px rise, fired once at -80px margin." },
+      { "name": "duration-card-in", "value": "450ms", "purpose": "Project-card entrance on filter change, staggered 45ms and capped at 320ms." },
+      { "name": "interval-terminal", "value": "900ms", "purpose": "Terminal line-print cadence." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "shell-max", "value": "1344px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The inverted call to action. One per viewport, maximum.",
+      "html": "<button class=\"ds-btn-primary\">Explore My Work<svg class=\"ds-btn-primary__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: #e9e9ee; color: #08080a; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 0.75rem 1.25rem; border: none; border-radius: 9999px; cursor: pointer; transition: background 300ms cubic-bezier(0.16,1,0.3,1), color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary__icon { width: 1rem; height: 1rem; transition: transform 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { background: #8b6cff; color: #ffffff; } .ds-btn-primary:hover .ds-btn-primary__icon { transform: translate(2px, -2px); } .ds-btn-primary:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline outline control; on hover both border and text shift to Cold Cathode.",
+      "html": "<button class=\"ds-btn-secondary\">Contact Me</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #e9e9ee; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; padding: 0.75rem 1.25rem; border: 1px solid rgba(255,255,255,0.16); border-radius: 9999px; cursor: pointer; transition: border-color 300ms cubic-bezier(0.16,1,0.3,1), color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-secondary:hover { border-color: #7cd4ff; color: #7cd4ff; } .ds-btn-secondary:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Category filter with a mono count. Selected state takes a violet border over a 10% wash.",
+      "html": "<div style=\"display:flex; gap:0.5rem;\"><button class=\"ds-chip\" aria-pressed=\"true\">All<span class=\"ds-chip__count\">10</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Cybersecurity<span class=\"ds-chip__count\">2</span></button></div>",
+      "css": ".ds-chip { background: transparent; color: #9195a1; font-family: Inter, system-ui, sans-serif; font-size: 0.8rem; padding: 0.5rem 0.875rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; cursor: pointer; transition: border-color 300ms cubic-bezier(0.16,1,0.3,1), color 300ms cubic-bezier(0.16,1,0.3,1), background 300ms cubic-bezier(0.16,1,0.3,1); } .ds-chip__count { margin-left: 0.5rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.68rem; color: #5f6470; } .ds-chip:hover { border-color: rgba(255,255,255,0.16); color: #e9e9ee; } .ds-chip[aria-pressed=\"true\"] { border-color: #8b6cff; background: rgba(139,108,255,0.1); color: #e9e9ee; } .ds-chip:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Project state, one tone per status. Cold Cathode for Completed, Filament for In Progress, hairline for the rest.",
+      "html": "<div style=\"display:flex; gap:0.5rem; flex-wrap:wrap;\"><span class=\"ds-status ds-status--done\">Completed</span><span class=\"ds-status ds-status--wip\">In Progress</span><span class=\"ds-status ds-status--quiet\">Archived</span></div>",
+      "css": ".ds-status { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1; padding: 0.25rem 0.625rem; border-radius: 9999px; border: 1px solid; } .ds-status--done { color: #7cd4ff; border-color: rgba(124,212,255,0.3); background: rgba(124,212,255,0.05); } .ds-status--wip { color: #8b6cff; border-color: rgba(139,108,255,0.35); background: rgba(139,108,255,0.08); } .ds-status--quiet { color: #5f6470; border-color: rgba(255,255,255,0.08); background: transparent; }"
+    },
+    {
+      "name": "Placeholder Badge",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Signature component. Marks content that is not real work, wherever a visitor can see it.",
+      "html": "<span class=\"ds-placeholder\"><span class=\"ds-placeholder__dot\"></span>Placeholder — not real work</span>",
+      "css": ".ds-placeholder { display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1; color: #8b6cff; padding: 0.25rem 0.625rem; border: 1px dashed rgba(139,108,255,0.4); background: rgba(139,108,255,0.08); border-radius: 9999px; } .ds-placeholder__dot { width: 4px; height: 4px; border-radius: 9999px; background: #8b6cff; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Translucent panel defined by its edge. Lifts 2px on hover while contained art scales slower than the frame.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card__label\">Websites</span><h3 class=\"ds-card__title\">This Portfolio</h3><p class=\"ds-card__body\">A personal identity system rather than a resume page — built as a design system first.</p><span class=\"ds-card__tags\"><span class=\"ds-card__tag\">Next.js</span><span class=\"ds-card__tag\">TypeScript</span></span></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; text-decoration: none; background: rgba(12,13,16,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1.25rem; transition: transform 300ms cubic-bezier(0.16,1,0.3,1), border-color 300ms cubic-bezier(0.16,1,0.3,1), background 300ms cubic-bezier(0.16,1,0.3,1); } .ds-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.16); background: rgba(12,13,16,0.7); } .ds-card__label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #5f6470; } .ds-card__title { margin: 0.75rem 0 0; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 400; letter-spacing: -0.02em; color: #e9e9ee; } .ds-card__body { margin: 0.5rem 0 0; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.625; color: #9195a1; } .ds-card__tags { display: flex; gap: 0.375rem; margin-top: 1.25rem; } .ds-card__tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.68rem; color: #5f6470; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.25rem; padding: 0.125rem 0.375rem; } .ds-card:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Mono label above, hairline field, violet border on focus. A placeholder never stands in for a label.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field__label\" for=\"ds-demo-input\">Subject</label><input class=\"ds-field__input\" id=\"ds-demo-input\" type=\"text\" placeholder=\"What is this about?\"></div>",
+      "css": ".ds-field { display: block; } .ds-field__label { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #5f6470; } .ds-field__input { display: block; width: 100%; margin-top: 0.5rem; background: rgba(8,8,10,0.6); color: #e9e9ee; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; padding: 0.75rem 0.875rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.5rem; outline: none; transition: border-color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-field__input::placeholder { color: #5f6470; } .ds-field__input:focus { border-color: #8b6cff; } .ds-field__input:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "button-secondary",
+      "description": "Scrolled state: translucent Desk Black with blur, hairline base, violet underline pinned under the active section.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav__mark\">KINSHUK<span class=\"ds-nav__dot\"></span></span><span class=\"ds-nav__links\"><a class=\"ds-nav__link ds-nav__link--active\" href=\"#\">Projects</a><a class=\"ds-nav__link\" href=\"#\">Cybersecurity</a><a class=\"ds-nav__link\" href=\"#\">Journey</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 72px; padding: 0 1.5rem; background: rgba(8,8,10,0.72); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-nav__mark { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: Inter, system-ui, sans-serif; font-size: 0.94rem; font-weight: 600; letter-spacing: 0.24em; color: #e9e9ee; } .ds-nav__dot { width: 4px; height: 4px; border-radius: 9999px; background: #8b6cff; transition: background 300ms cubic-bezier(0.16,1,0.3,1); } .ds-nav__mark:hover .ds-nav__dot { background: #7cd4ff; } .ds-nav__links { display: flex; gap: 0.25rem; } .ds-nav__link { position: relative; font-family: Inter, system-ui, sans-serif; font-size: 0.82rem; text-decoration: none; color: #9195a1; padding: 0.5rem 0.75rem; border-radius: 9999px; transition: color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-nav__link:hover { color: #e9e9ee; } .ds-nav__link--active { color: #e9e9ee; } .ds-nav__link--active::after { content: \"\"; position: absolute; left: 0.75rem; right: 0.75rem; bottom: -1px; height: 1px; background: #8b6cff; } .ds-nav__link:focus-visible { outline: 2px solid #7cd4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Terminal",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature component. Decorative status readout — never accepts input, never shows an executable command.",
+      "html": "<div class=\"ds-term\"><div class=\"ds-term__bar\"><span class=\"ds-term__dot ds-term__dot--v\"></span><span class=\"ds-term__dot ds-term__dot--i\"></span><span class=\"ds-term__dot\"></span><span class=\"ds-term__prompt\">KINSHUK@SYSTEM:~$</span></div><div class=\"ds-term__body\"><div class=\"ds-term__line\"><span class=\"ds-term__caret\">&gt;</span>initializing workspace...</div><div class=\"ds-term__line\"><span class=\"ds-term__caret\">&gt;</span>analyzing architecture...</div><div class=\"ds-term__line\"><span class=\"ds-term__caret\">&gt;</span>building next idea...</div><span class=\"ds-term__cursor\"></span></div></div>",
+      "css": ".ds-term { overflow: hidden; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.5rem; background: rgba(8,8,10,0.7); } .ds-term__bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-term__dot { width: 6px; height: 6px; border-radius: 9999px; background: rgba(255,255,255,0.16); } .ds-term__dot--v { background: rgba(139,108,255,0.7); } .ds-term__dot--i { background: rgba(124,212,255,0.5); } .ds-term__prompt { margin-left: 0.25rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #5f6470; } .ds-term__body { padding: 1rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8rem; line-height: 1.625; color: #9195a1; } .ds-term__line { display: flex; gap: 0.5rem; } .ds-term__caret { color: #8b6cff; } .ds-term__cursor { display: inline-block; width: 6px; height: 14px; margin-top: 0.25rem; background: rgba(124,212,255,0.8); vertical-align: middle; animation: ds-term-pulse 1.4s ease-in-out infinite; } @keyframes ds-term-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } } @media (prefers-reduced-motion: reduce) { .ds-term__cursor { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Studio",
+    "overview": "A dark room after hours with the work laid out on the table and one lamp over it. The surface you are looking at is a desk, not a dashboard: it has grain, it has a faint ruled grid, and it is mostly empty. Instruments are present — monospaced readouts, status rows, a terminal in the corner — but they sit at the edges of the room. The craft is what the light falls on.\n\nEverything saturated in this system is a light source. Filament Violet is the lamp; Cold Cathode is the screen. Nothing else in the palette emits — the greys are all absorbed light, ranging from near-black desk to bright paper-white text. This is why accent use is so restrained: adding a third glowing colour would turn a studio into an arcade.\n\nDensity is deliberately uneven. Sections breathe at 6–8rem of vertical rest, then concentrate into tight 12-column arrangements where the content earns it. No section repeats the previous section's structure: a vertical tab rail follows an editorial two-column, which follows a dense bento grid. The consistency lives in the surface treatment, type scale and accent discipline — never in the layout.",
+    "keyCharacteristics": [
+      "One texture across the entire site: a 72px ruled grid and film grain, both under 5% opacity",
+      "Zero shadows; depth is tonal layering plus hairline borders",
+      "Two accents only, both behaving as physical light",
+      "Editorial sans for everything a person reads; mono strictly for machine-adjacent text",
+      "Every composition legible with motion disabled"
+    ],
+    "rules": [
+      { "name": "The Two Lamps Rule", "body": "Only two things in this system emit light: Filament Violet and Cold Cathode. Combined, they cover under 10% of any viewport. A third saturated hue is a system violation, not a design decision.", "section": "colors" },
+      { "name": "The Absorbed Grey Rule", "body": "Every non-accent colour is a step on one neutral ramp from #08080a to #e9e9ee. No coloured greys, no tinted surfaces, no separate border colour per component. Two hairline weights carry every division on the site.", "section": "colors" },
+      { "name": "The Warm White Rule", "body": "Text is #e9e9ee, never #ffffff. Pure white is reserved for the single case of text on a filled violet button, where it is compensating for saturation.", "section": "colors" },
+      { "name": "The Machine Voice Rule", "body": "Monospace is only for things a machine would say: labels, indices, status values, metadata, counts, terminal output, file paths, and placeholder markers. The moment text is a person talking, it is Inter.", "section": "typography" },
+      { "name": "The Tighter As Bigger Rule", "body": "Letter-spacing tightens monotonically with size: -0.055em at display, -0.03em at headline, -0.02em at title, normal at body, and +0.16em at label. A large heading at default tracking is the single most reliable tell of an undesigned page.", "section": "typography" },
+      { "name": "The Index Rule", "body": "Every section headline is preceded by a mono index label (01 — About). It is the site's spine: it tells the visitor where they are in a long scroll without a progress UI.", "section": "typography" },
+      { "name": "The Shared Gutter Rule", "body": "Every section, in every composition, aligns to the same shell. A section that breaks the gutter to go full-bleed must still align its inner content to it.", "section": "layout" },
+      { "name": "The Empty Column Rule", "body": "When a layout needs a sidebar, skip a column between it and the body rather than closing the gap. The empty column is load-bearing.", "section": "layout" },
+      { "name": "The No-Shadow Rule", "body": "Depth comes from tone, edge and blur. If an element seems to need a shadow, it needs a tonal step or a stronger hairline instead.", "section": "elevation" },
+      { "name": "The Translucent Panel Rule", "body": "Panels sit at 40–60% opacity over the textured ground so the grid stays continuous beneath them. A fully opaque panel breaks the illusion that the whole page is one surface.", "section": "elevation" },
+      { "name": "The Nested Step Rule", "body": "A child container is always one radius step tighter than its parent (xl outside, lg inside). Matching radii across a nesting boundary flattens the hierarchy.", "section": "shapes" },
+      { "name": "The Pill Means Action Rule", "body": "Fully-rounded means interactive or stateful. Nothing static is a pill, and nothing clickable is a rectangle.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do align every section to the shared shell (84rem, gutters 1.25rem / 2rem / 3rem), whatever its internal composition.",
+      "Do precede every section headline with a mono index label (04 — Cybersecurity).",
+      "Do tighten letter-spacing as type scales up, to -0.055em at display size.",
+      "Do build depth from tonal steps, hairlines and backdrop blur.",
+      "Do keep panels translucent (40–60%) so the grid texture stays continuous under them.",
+      "Do give each project card an explicit shape so the grid never reads as a uniform matrix.",
+      "Do move contained artwork slower than its frame on hover (700ms art, 300ms card).",
+      "Do label every placeholder in the UI where a visitor can see it.",
+      "Do gate every animation on prefers-reduced-motion and verify the composition still holds with motion off."
+    ],
+    "donts": [
+      "Don't add a box-shadow. This system has none, anywhere.",
+      "Don't introduce a third saturated colour, or push violet and ice past ~10% of a viewport combined.",
+      "Don't use pure #ffffff for text except on a filled violet button.",
+      "Don't set body copy, headlines or prose in JetBrains Mono. Mono is the machine's voice only.",
+      "Don't put more than one primary (Paper White filled) button in a viewport.",
+      "Don't express skill or progress as a percentage, bar or ring.",
+      "Don't show a success state for anything that was not actually delivered.",
+      "Don't repeat a previous section's structure; the consistency is in the surface, not the layout.",
+      "Don't render a bare grey box where an image is missing — draw generated art at the correct aspect ratio instead."
+    ]
+  }
+}

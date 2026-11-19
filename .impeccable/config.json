@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-09-03T12:26:24.698Z",
+        "reason": "user confirmed: brief section 7 requires a fine grid and faint digital lines as the site texture, and the user marked the grid+grain texture off-limits in the critique constraints. DESIGN.md documents it as a first-class system property at 0.035/0.05 opacity; Assessment B independently ruled it a false positive."
+      }
+    ]
+  }
+}

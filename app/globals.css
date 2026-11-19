@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/* Dark is the default. `.light` on <html> switches to a deliberately designed
+   light theme (not an inversion). Tokens flip; utilities stay the same. */
+@custom-variant light (&:where(.light, .light *));
+
+@theme inline {
+  --color-canvas: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-raised: var(--c-raised);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-field: var(--c-field);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+  --color-violet: var(--c-violet);
+  --color-violet-deep: var(--c-violet-deep);
+  --color-ice: var(--c-ice);
+
+  /* Three voices, three families.
+     Archivo speaks as the interface. Newsreader speaks as Kinshuk.
+     JetBrains Mono speaks as the machine. They never trade places. */
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-prose: var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-mono-tech), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* The whole ramp. Nine steps, no arbitrary values anywhere in the app. */
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1;
+  --text-micro: 0.75rem;
+  --text-micro--line-height: 1.45;
+  --text-ui-sm: 0.8125rem;
+  --text-ui-sm--line-height: 1.45;
+  --text-ui: 0.875rem;
+  --text-ui--line-height: 1.5;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+  --text-title: 1.25rem;
+  --text-title--line-height: 1.3;
+  --text-lede: 1.5rem;
+  --text-lede--line-height: 1.45;
+  --text-headline: clamp(1.875rem, 4vw, 3rem);
+  --text-headline--line-height: 1.05;
+  --text-display: clamp(3.4rem, 15vw, 11rem);
+  --text-display--line-height: 0.86;
+
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --c-base: #08080a;
+  --c-surface: #0c0d10;
+  --c-raised: #121319;
+  --c-line: rgba(255, 255, 255, 0.08);
+  --c-line-strong: rgba(255, 255, 255, 0.16);
+  /* Field borders need 3:1 as a non-text control boundary, which a hairline
+     cannot reach on this ground. 3.98:1 against #08080a. */
+  --c-field: #6b6f7a;
+  --c-ink: #e9e9ee;
+  --c-muted: #9195a1;
+  /* 4.72:1 on #08080a, 4.59:1 on a surface panel — clears AA for the 11px
+     mono labels that carry the section eyebrows and every metadata key. */
+  --c-faint: #757b8a;
+  --c-violet: #8b6cff;
+  --c-violet-deep: #5b3ee8;
+  --c-ice: #7cd4ff;
+  --grid-alpha: 0.035;
+  --noise-alpha: 0.035;
+  color-scheme: dark;
+}
+
+.light {
+  --c-base: #f4f3f1;
+  --c-surface: #eceae7;
+  --c-raised: #ffffff;
+  --c-line: rgba(20, 20, 26, 0.12);
+  --c-line-strong: rgba(20, 20, 26, 0.24);
+  --c-field: #83848d; /* 3.35:1 on #f4f3f1 */
+  --c-ink: #16161a;
+  --c-muted: #55565f;
+  --c-faint: #6b6c75; /* 4.70:1 on #f4f3f1 */
+  --c-violet: #5b3ee8;
+  --c-violet-deep: #4429c9;
+  --c-ice: #0b7597; /* 4.73:1 on #f4f3f1 */
+  --grid-alpha: 0.05;
+  --noise-alpha: 0.02;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--c-line);
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--c-base);
+    color: var(--c-ink);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* Newsreader is an optical-size variable face; at reading sizes it wants the
+     text optical size, not the display one. */
+  .font-prose {
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 16;
+  }
+  section[id],
+  div[id] {
+    scroll-margin-top: 88px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--c-violet) 42%, transparent);
+    color: var(--c-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--c-ice);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-faint);
+}
+
+/* Fine technical grid — the base texture of the whole site. */
+@utility grid-field {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 72px 72px;
+  color: var(--c-ink);
+  opacity: var(--grid-alpha);
+}
+
+/* Low-opacity film grain, drawn once as an inline SVG turbulence. */
+@utility noise-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  opacity: var(--noise-alpha);
+}
+
+@utility hairline {
+  border-color: var(--c-line);
+}
+
+/* Shared page gutter so every section aligns to one grid. */
+@utility shell {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* ── Reveal ────────────────────────────────────────────────────────────────
+   Content is VISIBLE by default. The inline script in <head> adds `.js` to
+   <html> before first paint — and only when motion is welcome — so the hidden
+   state never reaches anyone who cannot animate out of it. No JS, no JS-yet,
+   or reduced-motion: the page renders complete.                            */
+.reveal {
+  opacity: 1;
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s var(--ease-signature),
+    transform 0.55s var(--ease-signature);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js .reveal[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility card-in {
+  animation: card-in 0.45s var(--ease-signature) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-in {
+    animation: none !important;
+  }
+}
